@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hitman Salon & Beauty</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #000, #e91e63);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .tagline {
+      font-size: 14px;
+      margin-top: 5px;
+      color: #f3f3f3;
+    }
+    .container {
+      width: 90%;
+      max-width: 600px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #e91e63;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      background: #e91e63;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #c2185b;
+    }
+    .appointments {
+      margin-top: 20px;
+    }
+    .appointment-card {
+      background: #f1f1f1;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💈 Hitman Salon & Beauty</h1>
+    <p class="tagline">Style That Kills, Beauty That Thrills</p>
+  </header>
+
+  <div class="container">
+    <h2>Book Your Appointment</h2>
+    <form id="appointmentForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="service">Select Service:</label>
+      <select id="service" required>
+        <option value="">--Choose a service--</option>
+        <option value="Haircut">Haircut</option>
+        <option value="Shaving">Shaving</option>
+        <option value="Facial">Facial</option>
+        <option value="Hair Coloring">Hair Coloring</option>
+        <option value="Beard Styling">Beard Styling</option>
+        <option value="Bridal Makeup">Bridal Makeup</option>
+      </select>
+
+      <label for="date">Date:</label>
+      <input type="date" id="date" required>
+
+      <label for="time">Time:</label>
+      <input type="time" id="time" required>
+
+      <button type="submit">Book Appointment</button>
+    </form>
+
+    <div class="appointments">
+      <h2>📅 Your Appointments</h2>
+      <div id="appointmentList"></div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('appointmentForm');
+    const appointmentList = document.getElementById('appointmentList');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const service = document.getElementById('service').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+
+      const appointmentCard = document.createElement('div');
+      appointmentCard.classList.add('appointment-card');
+      appointmentCard.innerHTML = `
+        <strong>${name}</strong><br>
+        Service: ${service}<br>
+        Date: ${date}<br>
+        Time: ${time}
+      `;
+
+      appointmentList.appendChild(appointmentCard);
+      form.reset();
+    });
+  </script>
+</body>
+</html>
